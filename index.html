@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClaimClarity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="eyebrow">Insurance demo</p>
+      <h1>ClaimClarity</h1>
+      <p class="lead">A calm, human view of where your claim stands—no portals, no jargon.</p>
+    </div>
+    <div class="form-card">
+      <h2>Look up your claim</h2>
+      <form id="lookupForm" class="lookup-form">
+        <label>Claim number
+          <input type="text" id="claimNumber" placeholder="e.g., CLM-1024" required>
+        </label>
+        <label>Last name
+          <input type="text" id="lastName" placeholder="e.g., Garcia" required>
+        </label>
+        <button type="submit">View status</button>
+        <p id="lookupError" class="error" role="alert"></p>
+      </form>
+      <p class="note">Use the sample claim numbers in the README to demo quickly.</p>
+    </div>
+  </header>
+
+  <main id="claimView" class="claim" hidden>
+    <section class="claim__summary">
+      <div>
+        <p class="eyebrow" id="claimType"></p>
+        <h2 id="claimTitle"></h2>
+        <p class="muted" id="incidentDate"></p>
+      </div>
+      <div class="status-badge" id="currentStatus"></div>
+    </section>
+
+    <section class="timeline" aria-label="Claim progress">
+      <h3>Progress</h3>
+      <div id="timelineSteps" class="timeline__steps"></div>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="panel__header">
+          <div>
+            <p class="eyebrow">What’s happening right now</p>
+            <h3 id="currentStepTitle"></h3>
+          </div>
+          <span class="pill" id="stepPill"></span>
+        </div>
+        <p id="currentStepDescription"></p>
+      </article>
+
+      <article class="panel">
+        <p class="eyebrow">What happens next?</p>
+        <h3 id="nextStepTitle"></h3>
+        <p id="nextStepDescription"></p>
+      </article>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="panel__header">
+          <div>
+            <p class="eyebrow">What we need from you</p>
+            <h3>Documents</h3>
+          </div>
+          <span class="pill pill--soft" id="documentSummary"></span>
+        </div>
+        <ul id="documentList" class="document-list"></ul>
+        <p class="muted" id="documentMessage"></p>
+      </article>
+
+      <article class="panel">
+        <p class="eyebrow">Questions</p>
+        <h3>Ask about this claim</h3>
+        <form id="questionForm" class="question-form">
+          <label class="sr-only" for="questionInput">Ask a question</label>
+          <textarea id="questionInput" rows="3" placeholder="Type your question" required></textarea>
+          <button type="submit">Send</button>
+        </form>
+        <div id="questionsList" class="questions"></div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">Built for a quick, empathetic demo—so customers never feel lost about their claim again.</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
